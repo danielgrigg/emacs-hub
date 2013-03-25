@@ -15,13 +15,13 @@ function replace-pref-file {
 }
 
 function replace-support-file {
-  SUPPORT_PATH=$SUPPORT_DIR/$1
-  if [[ -e $SUPPORT_PATH && ! -L $SUPPORT_PATH ]]; then
-    mv -f "$SUPPORT_PATH" "$SUPPORT_PATH.$OLD"
+  SUPPORT_FILE=$SUPPORT_DIR/$1
+  if [[ -e $SUPPORT_FILE && ! -L $SUPPORT_FILE ]]; then
+    mv -f "$SUPPORT_FILE" "$SUPPORT_FILE.$OLD"
   fi
-  ln -fs "$SCRIPT_DIR/$2" "$SUPPORT_PATH"
+  rm -f "$SUPPORT_FILE"
+  ln -s "$SCRIPT_DIR/$2" "$SUPPORT_FILE"
 }
-
 
 replace-pref-file Preferences.el preferences.el
 replace-support-file elpa elpa
