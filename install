@@ -2,18 +2,19 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-PREFS_DIR=~/Library/Preferences/Aquamacs\ Emacs
-SUPPORT_DIR=~/Library/Application\ Support/Aquamacs\ Emacs
+PREFS_DIR="$HOME/Library/Preferences/Aquamacs Emacs"
+SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
+OLD=hub.old
 
-function replace-prefs-file {
+function replace-pref-file {
   PREF_PATH=$PREFS_DIR/$1
-  if [ -e $PREF_PATH ]; then
-    mv -f $PREF_PATH $PREF_PATH.old
+  if [[ -e $PREF_PATH ]]; then
+    mv -f "$PREF_PATH" "$PREF_PATH.$OLD"
   fi
-  ln -s $SCRIPT_DIR/$2 $PREF_PATH
+  ln -s "$SCRIPT_DIR/$2" "$PREF_PATH"
 }
 
-replace-preferences-file Preferences.el preferences.el
+replace-pref-file Preferences.el preferences.el
 
 git submodule update --init --quiet
 

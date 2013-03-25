@@ -1,4 +1,18 @@
 #!/bin/bash
 
-#rm -f ~/.vim
+PREFS_DIR="$HOME/Library/Preferences/Aquamacs Emacs"
+SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
+OLD=hub.old
+
+function remove-pref-file {
+  rm -f $PREFS_DIR/$1
+  if [[ -e $PREFS_DIR/$1.$OLD ]]; then
+    mv "$PREFS_DIR/$1.$OLD" "$PREFS_DIR/$1"
+  fi
+}
+
+remove-pref-file Preferences.el
+
+git submodule update --init --quiet
+
 
