@@ -10,8 +10,15 @@ function remove-pref-file {
     mv "$PREFS_DIR/$1.$OLD" "$PREFS_DIR/$1"
   fi
 }
+function remove-support-file {
+  rm -f "$SUPPORT_DIR/$1" 
+  if [[ -e $SUPPORT_DIR/$1.$OLD && ! -L $SUPPORT_DIR/$1.$OLD ]]; then
+    mv "$SUPPORT_DIR/$1.$OLD" "$SUPPORT_DIR/$1"
+  fi
+}
 
 remove-pref-file Preferences.el
+remove-support-file elpa
 
 git submodule update --init --quiet
 

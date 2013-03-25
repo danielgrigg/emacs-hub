@@ -14,7 +14,17 @@ function replace-pref-file {
   ln -fs "$SCRIPT_DIR/$2" "$PREF_PATH"
 }
 
+function replace-support-file {
+  SUPPORT_PATH=$SUPPORT_DIR/$1
+  if [[ -e $SUPPORT_PATH && ! -L $SUPPORT_PATH ]]; then
+    mv -f "$SUPPORT_PATH" "$SUPPORT_PATH.$OLD"
+  fi
+  ln -fs "$SCRIPT_DIR/$2" "$SUPPORT_PATH"
+}
+
+
 replace-pref-file Preferences.el preferences.el
+replace-support-file elpa elpa
 
 git submodule update --init --quiet
 
