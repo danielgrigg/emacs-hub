@@ -4,3 +4,16 @@
 ;; evaluating this file and print errors in the *Messags* buffer.
 ;; Use this file in place of ~/.emacs (which is loaded as well.)
 
+(setq inhibit-startup-message t) ;; No splash screen
+(setq initial-scratch-message nil) ;; No scratch message
+(tool-bar-mode 0) ;; No toolbars
+
+;; Create backup files in .emacs-backup instead of everywhere
+(defvar user-temporary-file-directory "~/.emacs-backup")
+
+; key bindings
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+
