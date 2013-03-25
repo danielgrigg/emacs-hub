@@ -2,14 +2,18 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-function replace-file {
-  if [ -e ~/$1 ]; then
-    mv -f ~/$1 ~/$1.old
+PREFS_DIR=~/Library/Preferences/Aquamacs\ Emacs
+SUPPORT_DIR=~/Library/Application\ Support/Aquamacs\ Emacs
+
+function replace-prefs-file {
+  PREF_PATH=$PREFS_DIR/$1
+  if [ -e $PREF_PATH ]; then
+    mv -f $PREF_PATH $PREF_PATH.old
   fi
-  ln -s $SCRIPT_DIR/$2 ~/$1
+  ln -s $SCRIPT_DIR/$2 $PREF_PATH
 }
 
-#replace-vim-file .vim
+replace-preferences-file Preferences.el preferences.el
 
-#git submodule update --init --quiet
+git submodule update --init --quiet
 
