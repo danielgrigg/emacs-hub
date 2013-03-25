@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+function replace-file {
+  if [ -e ~/$1 ]; then
+    mv -f ~/$1 ~/$1.old
+  fi
+  ln -s $SCRIPT_DIR/$2 ~/$1
+}
+
+#replace-vim-file .vim
+
+#git submodule update --init --quiet
+

@@ -1,0 +1,1 @@
+A relocatable emacs config
