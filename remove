@@ -5,8 +5,8 @@ SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
 OLD=hub.old
 
 function remove-pref-file {
-  rm -f $PREFS_DIR/$1
-  if [[ -e $PREFS_DIR/$1.$OLD ]]; then
+  rm -f "$PREFS_DIR/$1"
+  if [[ -e $PREFS_DIR/$1.$OLD && ! -L $PREFS_DIR/$1.$OLD ]]; then
     mv "$PREFS_DIR/$1.$OLD" "$PREFS_DIR/$1"
   fi
 }

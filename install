@@ -8,10 +8,10 @@ OLD=hub.old
 
 function replace-pref-file {
   PREF_PATH=$PREFS_DIR/$1
-  if [[ -e $PREF_PATH ]]; then
+  if [[ -e $PREF_PATH && ! -L $PREF_PATH ]]; then
     mv -f "$PREF_PATH" "$PREF_PATH.$OLD"
   fi
-  ln -s "$SCRIPT_DIR/$2" "$PREF_PATH"
+  ln -fs "$SCRIPT_DIR/$2" "$PREF_PATH"
 }
 
 replace-pref-file Preferences.el preferences.el
