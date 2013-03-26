@@ -6,6 +6,10 @@ PREFS_DIR="$HOME/Library/Preferences/Aquamacs Emacs"
 SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
 OLD=hub.old
 
+[[ ! -d $PREFS_DIR ]] || mkdir -p "$PREFS_DIR"
+[[ ! -d $SUPPORT_DIR ]] || mkdir -p "$SUPPORT_DIR"
+
+
 function replace-pref-file {
   PREF_PATH=$PREFS_DIR/$1
   if [[ -e $PREF_PATH && ! -L $PREF_PATH ]]; then
