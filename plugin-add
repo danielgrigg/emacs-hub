@@ -12,7 +12,7 @@ if [[ -e $PACKAGE_DST ]]; then
   read -e -p "Add locally found $PACKAGE_NAME? " YN
   if [[ $YN = "y" || $YN = "Y" ]]; then
     git add $PACKAGE_DST
-    git commit -m "Add $PACKAGE_NAME"
+    git commit --quiet -m "Add $PACKAGE_NAME"
   fi
 fi
 
