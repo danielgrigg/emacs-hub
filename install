@@ -1,13 +1,14 @@
 #!/bin/bash
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 PREFS_DIR="$HOME/Library/Preferences/Aquamacs Emacs"
 SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
 OLD=hub.old
 
-[[ ! -d $PREFS_DIR ]] || mkdir -p "$PREFS_DIR"
-[[ ! -d $SUPPORT_DIR ]] || mkdir -p "$SUPPORT_DIR"
+[[ -d $PREFS_DIR ]] || mkdir -p "$PREFS_DIR"
+[[ -d $SUPPORT_DIR ]] || mkdir -p "$SUPPORT_DIR"
+[[ -d $HOME/.emacs.d ]] || mkdir -p "$HOME/.emacs.d"
 
 
 function replace-pref-file {
@@ -15,7 +16,7 @@ function replace-pref-file {
   if [[ -e $PREF_PATH && ! -L $PREF_PATH ]]; then
     mv -f "$PREF_PATH" "$PREF_PATH.$OLD"
   fi
-  ln -fs "$SCRIPT_DIR/$2" "$PREF_PATH"
+  ln -fs "$BASE/$2" "$PREF_PATH"
 }
 
 function replace-support-file {
@@ -24,11 +25,13 @@ function replace-support-file {
     mv -f "$SUPPORT_FILE" "$SUPPORT_FILE.$OLD"
   fi
   rm -f "$SUPPORT_FILE"
-  ln -s "$SCRIPT_DIR/$2" "$SUPPORT_FILE"
+  ln -s "$BASE/$2" "$SUPPORT_FILE"
 }
 
 replace-pref-file Preferences.el preferences.el
-replace-support-file elpa elpa
+replace-support-file elpa bundle
+
+ln -s "$BASE/bundle" "$HOME/.emacs.d/bundle"
 
 git submodule update --init --quiet
 
