@@ -23,3 +23,7 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 
+(autoload 'ghc-init "ghc" nil t)
+    (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+;; when using flymake!
+;;(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
