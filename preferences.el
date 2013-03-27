@@ -29,3 +29,13 @@
 ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/zenburn-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/solarized-emacs")
+
+;TODO - this should work but doesn't. Whilst the theme loads, the actual
+;colours loaded don't match the theme. Our workaround is to scan
+;the list of available mode hooks and load zenburn for each. By the 
+;time the mode is selected, load-theme seems to work.
+
+;(load-theme 'zenburn 1)
+(load-file "~/.emacs.d/hooks.el")
+
