@@ -10,9 +10,13 @@
                "http://marmalade-repo.org/packages/"))
 
 (package-initialize)
+
+;; GUI
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
 (setq inhibit-startup-message t) ;; No splash screen
 (setq initial-scratch-message nil) ;; No scratch message
-(tool-bar-mode 0) ;; No toolbars
+
 
 ;; Create backup files in .emacs-backup instead of everywhere
 (defvar user-temporary-file-directory "~/.emacs-backup")
@@ -22,12 +26,21 @@
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-'") 'linum-mode)
+;;(global-set-key (kbd "C-c o") 'occur)
 
 (autoload 'ghc-init "ghc" nil t)
     (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 ;; when using flymake!
 ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 
+
+;; Themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/zenburn-emacs")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/solarized-emacs")
 ;;(load-theme 'zenburn 1)
+;;
+;; Annoying warnings
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
