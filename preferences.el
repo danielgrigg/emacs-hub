@@ -44,3 +44,12 @@
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
   (flet ((process-list ())) ad-do-it))
+
+;; highlight-symbol.el
+(load-file "~/.emacs.d/bundle/highlight-symbol.el/highlight-symbol.el")
+(global-set-key (kbd "C-,") 'highlight-symbol-at-point)
+;;(global-set-key [(control f3)] 'highlight-symbol-at-point)
+;;(global-set-key [f3] 'highlight-symbol-next)
+;;(global-set-key [(shift f3)] 'highlight-symbol-prev)
+;;(global-set-key [(meta f3)] 'highlight-symbol-prev)))
+;;(global-set-key [(control meta f3)] 'highlight-symbol-query-replace)

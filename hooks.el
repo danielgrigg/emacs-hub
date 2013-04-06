@@ -1,4 +1,4 @@
-;;auto-generated hooks since emacs24 doesn't seem to load-theme properly in init.el
+;;auto-generated hooks since Aquamacs doesn't seem to load-theme properly in init.el
 (add-hook 'clojure-mode-hook (lambda () (load-theme 'zenburn 1)))
 (add-hook 'clojurescript-mode-hook (lambda () (load-theme 'zenburn 1)))
 (add-hook 'cmake-mode-hook (lambda () (load-theme 'zenburn 1)))
