@@ -3,3 +3,8 @@
 git pull --recurse-submodules
 git submodule update --recursive
 
+echo ";;auto-generated hooks since Aquamacs doesn't seem to load-theme properly in init.el" > hooks.el
+for h in `ack -oh "\'\w+\-mode-hook" * | sort -u`; do
+  echo "(add-hook $h (lambda () (load-theme 'zenburn 1)))" >> hooks.el
+done
+

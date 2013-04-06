@@ -8,8 +8,6 @@ OLD=hub.old
 
 [[ -d $PREFS_DIR ]] || mkdir -p "$PREFS_DIR"
 [[ -d $SUPPORT_DIR ]] || mkdir -p "$SUPPORT_DIR"
-[[ -d $HOME/.emacs.d ]] || mkdir -p "$HOME/.emacs.d"
-
 
 function replace-pref-file {
   PREF_PATH=$PREFS_DIR/$1
@@ -31,7 +29,11 @@ function replace-support-file {
 replace-pref-file Preferences.el preferences.el
 replace-support-file elpa bundle
 
-ln -s "$BASE/bundle" "$HOME/.emacs.d/bundle"
+if [[ -d $HOME/.emacs.d ]]; then
+  mv -f "$HOME/.emacs.d" "$HOME/.emacs.d.old"
+fi
+
+ln -sf "$BASE" "$HOME/.emacs.d"
 
 git submodule update --init --quiet
 

@@ -29,4 +29,5 @@
 ;;(add-hook 'haskell-mode-hook (lambda () (ghc-init) (flymake-mode)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/zenburn-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/solarized-emacs")
 ;;(load-theme 'zenburn 1)
