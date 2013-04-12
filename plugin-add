@@ -10,9 +10,20 @@ PACKAGE_NAME=$(basename $1)
 PACKAGE_DST=$SCRIPT_DIR/elpa/$PACKAGE_NAME
 if [[ -e $PACKAGE_DST ]]; then
   read -e -p "Add locally found $PACKAGE_NAME? " YN
-  if [[ $YN = "y" || $YN = "Y" ]]; then
-    git add $PACKAGE_DST
-    git commit --quiet -m "Add $PACKAGE_NAME"
+  if [[ $YN = "n" || $YN = "N" ]]; then
+    exit 0
   fi
+fi
+
+if [[ -e $PACKAGE_PATH ]]; then
+  git add $PACKAGE_PATH
+  git commit --quiet -m "Add $PACKAGE_NAME"
+else
+  [[ $(git submodule add $1 $PACKAGE_PATH) ]] 
+  git pull --recurse-submodules
+  git submodule update --recursive
+  git add $PACKAGE_PATH
+  git add .gitmodules
+  git commit -m "Added $1 to $PACKAGE_NAME."
 fi
 

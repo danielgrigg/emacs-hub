@@ -7,3 +7,6 @@
 [submodule "bundle/glsl-mode"]
 	path = bundle/glsl-mode
 	url = https://github.com/jimhourihan/glsl-mode.git
+[submodule "bundle/highlight-symbol.el"]
+	path = bundle/highlight-symbol.el
+	url = https://github.com/nschum/highlight-symbol.el.git
