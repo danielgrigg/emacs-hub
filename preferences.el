@@ -31,3 +31,11 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/zenburn-emacs")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/bundle/solarized-emacs")
 ;;(load-theme 'zenburn 1)
+
+(autoload 'glsl-mode "glsl-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vsh\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.fsh\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
