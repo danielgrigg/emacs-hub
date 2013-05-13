@@ -1,5 +1,5 @@
 #!/bin/bash
 
-git pull --recurse-submodules
-git submodule update --recursive
+git pull --quiet --recurse-submodules
+git submodule --quiet update --recursive
 
