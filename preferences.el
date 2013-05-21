@@ -61,3 +61,7 @@
 ;;(global-set-key [(shift f3)] 'highlight-symbol-prev)
 ;;(global-set-key [(meta f3)] 'highlight-symbol-prev)))
 ;;(global-set-key [(control meta f3)] 'highlight-symbol-query-replace)
+
+(autoload 'markdown-mode "markdown-mode"
+ "Major mode for editing Markdown files" t)
+	(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
