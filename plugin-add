@@ -7,8 +7,8 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PACKAGE_NAME=$(basename $1)
-PACKAGE_DST=$SCRIPT_DIR/elpa/$PACKAGE_NAME
-if [[ -e $PACKAGE_DST ]]; then
+PACKAGE_PATH=$SCRIPT_DIR/bundle/$PACKAGE_NAME
+if [[ -e $PACKAGE_PATH ]]; then
   read -e -p "Add locally found $PACKAGE_NAME? " YN
   if [[ $YN = "n" || $YN = "N" ]]; then
     exit 0
