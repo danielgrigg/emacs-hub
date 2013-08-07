@@ -1,0 +1,8 @@
+#!/bin/bash
+
+[[ -d downloads ]] || mkdir downloads
+cd downloads
+curl -o Aquamacs-nightly http://braeburn.aquamacs.org/~dreitter/Aquamacs/24/Aquamacs-nightly.tar.bz2
+tar xjf Aquamacs-nightly
+cd -
+
