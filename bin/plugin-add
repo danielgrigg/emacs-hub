@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then 
+  echo "Usage: $0 <package-name>"
+  exit 1
+fi
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PACKAGE_NAME=$(basename $1)
+PACKAGE_PATH=$SCRIPT_DIR/../bundle/$PACKAGE_NAME
+if [[ -e $PACKAGE_PATH ]]; then
+  read -e -p "Add locally found $PACKAGE_NAME? " YN
+  if [[ $YN = "n" || $YN = "N" ]]; then
+    exit 0
+  fi
+fi
+
+if [[ -e $PACKAGE_PATH ]]; then
+  git add $PACKAGE_PATH
+  git commit --quiet -m "Add $PACKAGE_NAME"
+else
+  [[ $(git submodule add $1 $PACKAGE_PATH) ]] 
+  git pull --recurse-submodules
+  git submodule update --recursive
+  git add $PACKAGE_PATH
+  git add .gitmodules
+  git commit -m "Added $1 to $PACKAGE_NAME."
+fi
+

@@ -4,7 +4,7 @@
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
 ;;;### (autoloads (ac-nrepl-popup-doc ac-nrepl-setup) "ac-nrepl"
-;;;;;;  "ac-nrepl.el" (20990 14201 0 0))
+;;;;;;  "ac-nrepl.el" (20996 18016 0 0))
 ;;; Generated autoloads from ac-nrepl.el
 
 (add-hook 'nrepl-connected-hook 'ac-nrepl-refresh-class-cache t)
@@ -49,7 +49,7 @@ A popup alternative to `nrepl-doc'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ac-nrepl-pkg.el") (20990 14201 669042
+;;;### (autoloads nil nil ("ac-nrepl-pkg.el") (20996 18016 647771
 ;;;;;;  0))
 
 ;;;***

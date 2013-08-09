@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then 
+  echo "Usage: $0 <package-name>"
+  exit 1
+fi
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PACKAGE_NAME=$(basename $1)
+PACKAGE_PATH=$SCRIPT_DIR/../bundle/$PACKAGE_NAME
+
+if [[ -e $PACKAGE_PATH ]]; then
+  echo "removing $PACKAGE_PATH"
+  git rm -r "$PACKAGE_PATH"
+  git commit -m "Remove $PACKAGE_NAME"
+fi
+

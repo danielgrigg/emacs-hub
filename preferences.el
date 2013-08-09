@@ -61,3 +61,15 @@
 ;;(global-set-key [(shift f3)] 'highlight-symbol-prev)
 ;;(global-set-key [(meta f3)] 'highlight-symbol-prev)))
 ;;(global-set-key [(control meta f3)] 'highlight-symbol-query-replace)
+(autoload 'markdown-mode "markdown-mode"
+ "Major mode for editing Markdown files" t)
+	(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+(add-hook 'clojure-mode-hook           #'enable-paredit-mode)
