@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function deleted_bundles {
+  git ls-files -d -- | cut -d'/' -f2 | sort -u
+}
+
+function untracked_bundles {
+  git ls-files --others | while read line; do dirname $line; done | sort -u | grep bundle | cut -d'/' -f2
+}
+
+for bundle in $(deleted_bundles); do
+  git rm -r bundle/$bundle
+  git commit -qm "Removing plugin $bundle"
+done
+
+for bundle in $(untracked_bundles); do
+  echo "adding $bundle"
+  git add bundle/$bundle
+  git commit -qm "Adding plugin $bundle"
+done
