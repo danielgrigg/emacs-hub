@@ -4,7 +4,7 @@
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
 ;;;### (autoloads (ag-regexp-project-at-point ag-project-regexp ag-project
-;;;;;;  ag-regexp ag) "ag" "ag.el" (20996 23409 0 0))
+;;;;;;  ag-regexp ag) "ag" "ag.el" (20990 14196 0 0))
 ;;; Generated autoloads from ag.el
 
 (autoload 'ag "ag" "\
@@ -40,7 +40,7 @@ to the symbol under point.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ag-pkg.el") (20996 23409 723750 0))
+;;;### (autoloads nil nil ("ag-pkg.el") (20990 14196 719286 0))
 
 ;;;***
 
