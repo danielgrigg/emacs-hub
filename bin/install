@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 PREFS_DIR="$HOME/Library/Preferences/Aquamacs Emacs"
 SUPPORT_DIR="$HOME/Library/Application Support/Aquamacs Emacs"
@@ -27,6 +27,7 @@ function replace-support-file {
 }
 
 replace-pref-file Preferences.el preferences.el
+replace-pref-file customizations.el customizations.el
 replace-support-file elpa bundle
 
 if [[ -d $HOME/.emacs.d ]]; then
